@@ -1,0 +1,182 @@
+/* ============================================================
+   むし台帳 - Design Tokens
+   コンセプト: 標本ラベル × iOSライクな清潔感
+   ============================================================ */
+
+:root {
+  /* --- Color: Surface --- */
+  --color-bg: #F6F6F3;
+  --color-bg-elevated: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-sunken: #EFEFEC;
+  --color-border: #E2E2DD;
+  --color-border-strong: #CFCFC8;
+
+  /* --- Color: Text --- */
+  --color-text: #1C1E1B;
+  --color-text-secondary: #6B6F68;
+  --color-text-tertiary: #9A9D96;
+  --color-text-on-accent: #FBF8F1;
+
+  /* --- Color: Brand (鍬形茶 / 標本アンバー) --- */
+  --color-accent: #A85A23;
+  --color-accent-strong: #8A4A1B;
+  --color-accent-soft: #F1DFC8;
+  --color-accent-soft-text: #7A4117;
+
+  /* --- Color: 深緑 (生存 / プライマリ操作) --- */
+  --color-forest: #2F5D45;
+  --color-forest-strong: #244A37;
+  --color-forest-soft: #DCEAE0;
+  --color-forest-soft-text: #244A37;
+
+  /* --- Color: ステータス --- */
+  --color-status-alive: #2F5D45;
+  --color-status-alive-soft: #DCEAE0;
+  --color-status-dead: #76787A;
+  --color-status-dead-soft: #E7E7E5;
+  --color-status-transferred: #335E8C;
+  --color-status-transferred-soft: #DDE7F1;
+  --color-status-sold: #A5841F;
+  --color-status-sold-soft: #F2E8CC;
+
+  /* --- Color: WD/世代マーカー --- */
+  --color-wd: #8A4A1B;
+
+  /* --- Typography --- */
+  --font-ui: "Zen Kaku Gothic New", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --font-label: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 21px;
+  --text-2xl: 26px;
+  --text-3xl: 32px;
+
+  /* --- Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* --- Shadow --- */
+  --shadow-card: 0 1px 2px rgba(28, 30, 27, 0.04), 0 2px 10px rgba(28, 30, 27, 0.05);
+  --shadow-float: 0 8px 24px rgba(28, 30, 27, 0.16);
+  --shadow-header: 0 1px 0 rgba(28, 30, 27, 0.06);
+
+  /* --- Layout --- */
+  --tabbar-height: 56px;
+  --header-height: 52px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  color-scheme: light;
+}
+
+/* ============================================================
+   Reset / Base
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  height: 100%;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input, textarea, select {
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+/* Visible keyboard focus for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Utility classes
+   ============================================================ */
+
+.mono {
+  font-family: var(--font-label);
+  font-feature-settings: "tnum" 1;
+}
+
+.app-shell {
+  height: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(var(--tabbar-height) + var(--safe-bottom) + 24px);
+}
